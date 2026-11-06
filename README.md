@@ -1,3 +1,17 @@
+# Contract Review Hardened
+
+A security-hardened derivative of [evolsb/claude-legal-skill](https://github.com/evolsb/claude-legal-skill), based on upstream commit `bca0d2e9d5ec81298ddfbfde78fa4f38fb4589b0`. Original MIT license and attribution are retained.
+
+The new skill is named `contract-review-hardened`; its entrypoint is `SKILL.md`. It preserves upstream contract-review checklists while adding an explicit boundary between counterparty documents and assistant instructions, safe extraction requirements, scoped access, disclosure controls, and output checks.
+
+Prompt-only controls reduce risk; they do not eliminate indirect prompt injection. A scanner that flags third-party text exposure may still flag this skill because reading contracts is its core function. No clean scanner result or universal security guarantee is claimed.
+
+Install by cloning this fork into your tool's skills directory under `contract-review-hardened`. Invoke it with a request such as “Use $contract-review-hardened to review this NDA; I am the receiving party.” Installation does not require running repository code.
+
+The original usage and capability notes follow. Their examples and benchmark claims are upstream descriptions, not independently validated guarantees. Optional external tooling is not bundled or automatically installed; use it only on a separate explicit request.
+
+---
+
 # Contract Review — Agent Skill for Legal Analysis
 
 > AI-powered contract review with CUAD risk detection, market benchmarks, and lawyer-ready redlines
@@ -14,10 +28,10 @@
 
 ```bash
 # Claude Code
-git clone https://github.com/evolsb/claude-legal-skill ~/.claude/skills/contract-review
+git clone https://github.com/redowie/contract-review-hardened ~/.claude/skills/contract-review-hardened
 
 # OpenAI Codex
-git clone https://github.com/evolsb/claude-legal-skill ~/.codex/skills/contract-review
+git clone https://github.com/redowie/contract-review-hardened ~/.codex/skills/contract-review-hardened
 
 # Other Agent Skills-compatible tools — clone to your tool's skills directory
 ```
@@ -135,10 +149,10 @@ This skill follows the open [Agent Skills standard](https://agentskills.io) and 
 
 ```bash
 # Claude Code
-git clone https://github.com/evolsb/claude-legal-skill ~/.claude/skills/contract-review
+git clone https://github.com/redowie/contract-review-hardened ~/.claude/skills/contract-review-hardened
 
 # OpenAI Codex
-git clone https://github.com/evolsb/claude-legal-skill ~/.codex/skills/contract-review
+git clone https://github.com/redowie/contract-review-hardened ~/.codex/skills/contract-review-hardened
 
 # Cursor, Copilot, Gemini CLI, etc.
 # Clone to your tool's skills directory
@@ -146,8 +160,8 @@ git clone https://github.com/evolsb/claude-legal-skill ~/.codex/skills/contract-
 
 ### Development (Symlink)
 ```bash
-git clone https://github.com/evolsb/claude-legal-skill ~/Developer/claude-legal-skill
-ln -s ~/Developer/claude-legal-skill ~/.claude/skills/contract-review
+git clone https://github.com/redowie/contract-review-hardened ~/Developer/contract-review-hardened
+ln -s ~/Developer/contract-review-hardened ~/.claude/skills/contract-review-hardened
 ```
 
 ---
